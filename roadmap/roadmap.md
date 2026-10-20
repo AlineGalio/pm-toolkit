@@ -1,6 +1,4 @@
-# `roadmap/roadmap.md`
-
-## Broker Portal remediation program: 6-month roadmap
+# Broker Portal remediation program: 6-month roadmap
 
 **Window:** 2026-11-02 to 2027-04-30 · **Source:** Technical Debt Assessment (13 items, 860 h) · *Fictional data*
 
