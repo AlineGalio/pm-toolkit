@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head><script src="https://myhub.ia.br/canvas-vendor/tailwind.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agile Delivery Dashboard – Broker Portal (Sample)</title>
+<style>
+  :root{--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc;--brand:#0f4c81}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  header{background:var(--brand);color:#fff;padding:36px 8vw}
+  header h1{margin:0 0 6px;font-size:28px}
+  header p{margin:0;opacity:.9}
+  .meta{margin-top:14px;font-size:13px;opacity:.85;display:flex;gap:18px;flex-wrap:wrap}
+  main{padding:24px 8vw 40px;max-width:1200px;margin:auto}
+  h2{margin:32px 0 12px;font-size:20px;color:var(--brand);border-bottom:2px solid var(--line);padding-bottom:6px}
+  .notice{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;font-size:13px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .card .v{font-size:28px;font-weight:700;color:var(--brand)}
+  .card .l{font-size:13px;color:var(--muted)}
+  .card .s{font-size:12px;color:#15803d;margin-top:2px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .box h3{margin:0 0 2px;font-size:15px}
+  .box .d{margin:0 0 8px;font-size:12px;color:var(--muted)}
+  .lg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:4px}
+  .lg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  svg{width:100%;height:auto;display:block}
+  .grid{stroke:#e5e7eb;stroke-width:1}
+  .ax{font-size:11px;fill:#6b7280}
+  .val{font-size:10px;fill:#374151}
+  .valw{font-size:10px;fill:#fff;font-weight:600}
+  .wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}
+  th,td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  th{background:#eef2f7;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#374151}
+  ul{font-size:14px;padding-left:18px;margin:0}
+  footer{padding:20px 8vw;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Agile Delivery Dashboard</h1>
+  <p>Broker Portal remediation program · Example Insurance Co. (fictional)</p>
+  <div class="meta"><span>Snapshot: end of Sprint 8 (2027-02-19)</span><span>2-week sprints from 2026-11-02</span><span>Fictional data</span></div>
+</header>
+
+<main>
+  <p class="notice"><strong>Sample dashboard.</strong> Built from scratch with invented numbers. It is not an export from Jira or any real tool, and nothing here comes from a real client.</p>
+
+  <h2>1. Key indicators</h2>
+  <div class="cards" id="cards"></div>
+
+  <h2>2. Flow and quality</h2>
+  <div class="grid2">
+    <div class="box"><h3>Velocity</h3><p class="d">Story points planned vs completed per sprint</p>
+      <div class="lg"><span><i style="background:#c7d2e0"></i>Planned</span><span><i style="background:#0f4c81"></i>Completed</span><span><i style="background:#6b7280"></i>Average (dashed)</span></div>
+      <div id="c1"></div></div>
+    <div class="box"><h3>Sprint 8 burndown</h3><p class="d">Remaining story points by working day</p>
+      <div class="lg"><span><i style="background:#9ca3af"></i>Ideal (dashed)</span><span><i style="background:#0f4c81"></i>Actual</span></div>
+      <div id="c2"></div></div>
+    <div class="box"><h3>Lead time</h3><p class="d">Days from "ready" to production, per sprint</p>
+      <div class="lg"><span><i style="background:#0f4c81"></i>Median</span><span><i style="background:#c2410c"></i>85th percentile</span></div>
+      <div id="c3"></div></div>
+    <div class="box"><h3>Bugs per sprint</h3><p class="d">Opened and closed, with open backlog at sprint end</p>
+      <div class="lg"><span><i style="background:#b91c1c"></i>Opened</span><span><i style="background:#15803d"></i>Closed</span><span><i style="background:#1f2937"></i>Open at end</span></div>
+      <div id="c4"></div></div>
+    <div class="box"><h3>Incidents per release</h3><p class="d">Sev1 and Sev2 incidents within 48 h of each release</p>
+      <div class="lg"><span><i style="background:#7f1d1d"></i>Sev1</span><span><i style="background:#ea580c"></i>Sev2</span></div>
+      <div id="c5"></div></div>
+    <div class="box"><h3>Reading the data</h3>
+      <ul>
+        <li>Velocity rose from 24 to 37 points as the team stabilized and security fixes cleared the way.</li>
+        <li>Bugs peaked in S2, when the premium tests exposed existing defects (risk R-04).</li>
+        <li>Lead time fell after the pipeline gained dependency and secret scans.</li>
+        <li>No incidents in the last four releases, after the TLS fix and the circuit breaker pilot.</li>
+      </ul></div>
+  </div>
+
+  <h2>3. Sprint data</h2>
+  <div class="wrap"><table id="tbl"></table></div>
+
+  <h2>4. Definitions</h2>
+  <ul>
+    <li><strong>Velocity:</strong> story points of stories that met the Definition of Done in the sprint.</li>
+    <li><strong>Commitment reliability:</strong> completed points divided by planned points.</li>
+    <li><strong>Lead time:</strong> median calendar days from "ready" (DoR met) to running in production.</li>
+    <li><strong>Bug:</strong> defect found after merge. <strong>Incident:</strong> Sev1 or Sev2 within 48 h of a release.</li>
+    <li><strong>Debt hours closed:</strong> hours of assessment items EX-01, 02, 03, 04, 06 and 08 (272 of 860 h).</li>
+  </ul>
+</main>
+
+<footer>Sample dashboard with fictional data · Portfolio material · No client information</footer>
+
+<script>
+const D={
+  sprints:['S1','S2','S3','S4','S5','S6','S7','S8'],
+  planned:[30,32,34,34,28,36,36,38],
+  done:[24,29,31,33,26,34,35,37],
+  burn:[38,38,34,31,27,24,20,15,11,6,1],
+  lead:[9.5,8.8,8.0,7.5,8.2,6.9,6.4,6.0],
+  p85:[15,14,13,12,14,11,10,9.5],
+  opened:[7,9,6,8,5,4,5,3],
+  closed:[4,8,7,8,6,6,5,5],
+  open:[15,16,15,15,14,12,12,10],
+  sev1:[1,0,0,0,0,0,0,0],
+  sev2:[1,1,0,1,0,0,0,0]
+};
+const sum=a=>a.reduce((x,y)=>x+y,0);
+const W=560,H=250,L=38,R=10,T=12,B=30;
+const g=n=>(W-L-R)/n;
+const X=(i,n)=>L+g(n)*(i+.5);
+const Y=(v,m)=>T+(H-T-B)*(1-v/m);
+
+function base(labels,m,step){
+  let s='';
+  for(let v=0;v<=m;v+=step)
+    s+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${Y(v,m)}" y2="${Y(v,m)}"/><text class="ax" x="${L-6}" y="${Y(v,m)+4}" text-anchor="end">${v}</text>`;
+  labels.forEach((l,i)=>s+=`<text class="ax" x="${X(i,labels.length)}" y="${H-10}" text-anchor="middle">${l}</text>`);
+  return s;
+}
+function bars(series,n,m){
+  const k=series.length,bw=g(n)*.72/k;let s='';
+  series.forEach((se,j)=>se.v.forEach((v,i)=>{
+    const x=X(i,n)-g(n)*.36+j*bw,y=Y(v,m);
+    s+=`<rect x="${x}" y="${y}" width="${bw-2}" height="${Y(0,m)-y}" fill="${se.c}" rx="2"/><text class="val" x="${x+(bw-2)/2}" y="${y-3}" text-anchor="middle">${v}</text>`;
+  }));
+  return s;
+}
+function line(v,m,c,dash){
+  const n=v.length;
+  const pts=v.map((a,i)=>`${X(i,n)},${Y(a,m)}`).join(' ');
+  let s=`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="2.5"${dash?' stroke-dasharray="6 4"':''}/>`;
+  if(!dash) s+=v.map((a,i)=>`<circle cx="${X(i,n)}" cy="${Y(a,m)}" r="3.5" fill="${c}"/>`).join('');
+  return s;
+}
+function stack(series,n,m){
+  let s='';
+  for(let i=0;i<n;i++){
+    let acc=0;
+    series.forEach(se=>{
+      const v=se.v[i]; if(!v) return;
+      const y0=Y(acc,m),y1=Y(acc+v,m);
+      s+=`<rect x="${X(i,n)-g(n)*.3}" y="${y1}" width="${g(n)*.6}" height="${y0-y1}" fill="${se.c}" rx="2"/><text class="valw" x="${X(i,n)}" y="${(y0+y1)/2+4}" text-anchor="middle">${v}</text>`;
+      acc+=v;
+    });
+  }
+  return s;
+}
+const svg=(id,label,inner)=>document.getElementById(id).innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}">${inner}</svg>`;
+
+const n=D.sprints.length;
+const avg=sum(D.done)/n;
+svg('c1','Velocity per sprint',
+  base(D.sprints,40,10)+bars([{v:D.planned,c:'#c7d2e0'},{v:D.done,c:'#0f4c81'}],n,40)+line(Array(n).fill(avg),40,'#6b7280',true));
+
+const ideal=Array.from({length:11},(_,d)=>+(38-3.8*d).toFixed(1));
+svg('c2','Sprint 8 burndown',
+  base(D.burn.map((_,d)=>d),40,10)+line(ideal,40,'#9ca3af',true)+line(D.burn,40,'#0f4c81'));
+
+svg('c3','Lead time per sprint',
+  base(D.sprints,16,4)+line(D.p85,16,'#c2410c')+line(D.lead,16,'#0f4c81'));
+
+svg('c4','Bugs per sprint',
+  base(D.sprints,20,5)+bars([{v:D.opened,c:'#b91c1c'},{v:D.closed,c:'#15803d'}],n,20)+line(D.open,20,'#1f2937'));
+
+svg('c5','Incidents per release',
+  base(D.sprints.map((s,i)=>'R'+(i+1)),3,1)+stack([{v:D.sev1,c:'#7f1d1d'},{v:D.sev2,c:'#ea580c'}],n,3));
+
+const inc=D.sev1.map((v,i)=>v+D.sev2[i]);
+const relInc=inc.filter(v=>v>0).length;
+const last3=sum(D.done.slice(-3))/3;
+const rel=sum(D.done)/sum(D.planned)*100;
+const leadDrop=(D.lead[0]-D.lead[n-1])/D.lead[0]*100;
+document.getElementById('cards').innerHTML=[
+  [avg.toFixed(1)+' pts','Average velocity',`Last 3 sprints: ${last3.toFixed(1)}`],
+  [rel.toFixed(1)+'%','Commitment reliability',`${sum(D.done)} of ${sum(D.planned)} points`],
+  [D.lead[n-1].toFixed(1)+' d','Median lead time (S8)',`Down ${leadDrop.toFixed(0)}% since S1`],
+  [D.open[n-1],'Open bugs',`Peak was ${Math.max(...D.open)} in S2`],
+  [sum(inc),'Incidents in 8 releases',`${relInc} releases affected, 0 in the last 4`],
+  ['272 / 860 h','Debt hours closed','6 of 13 items (31.6%)']
+].map(c=>`<div class="card"><div class="v">${c[0]}</div><div class="l">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
+
+let t='<thead><tr><th>Sprint</th><th>Planned</th><th>Done</th><th>Reliability</th><th>Median lead (d)</th><th>P85 lead (d)</th><th>Bugs opened</th><th>Bugs closed</th><th>Open bugs</th><th>Incidents</th></tr></thead><tbody>';
+D.sprints.forEach((s,i)=>{
+  t+=`<tr><td>${s}</td><td>${D.planned[i]}</td><td>${D.done[i]}</td><td>${Math.round(D.done[i]/D.planned[i]*100)}%</td><td>${D.lead[i].toFixed(1)}</td><td>${D.p85[i].toFixed(1)}</td><td>${D.opened[i]}</td><td>${D.closed[i]}</td><td>${D.open[i]}</td><td>${inc[i]}</td></tr>`;
+});
+t+=`<tr><th>Total</th><th>${sum(D.planned)}</th><th>${sum(D.done)}</th><th>${rel.toFixed(1)}%</th><th></th><th></th><th>${sum(D.opened)}</th><th>${sum(D.closed)}</th><th></th><th>${sum(inc)}</th></tr></tbody>`;
+document.getElementById('tbl').innerHTML=t;
+</script>
+</body>
+</html>
