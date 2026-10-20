@@ -1,6 +1,4 @@
-# `risks/risk-register.md`
-
-## Risk register
+# Risk register
 
 **Score = Probability × Impact** (1–5 each), same bands as the assessment: Act now ≥ 16 · Plan 9–15 · Defer 4–8 · Accept ≤ 3.
 
