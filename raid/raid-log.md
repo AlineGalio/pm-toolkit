@@ -1,6 +1,4 @@
-# `raid/raid-log.md`
-
-## RAID log: Assumptions, Issues, Dependencies
+# RAID log: Assumptions, Issues, Dependencies
 
 Risks live in the [risk register](../risks/risk-register.md). Owners are roles. *Fictional data.*
 
