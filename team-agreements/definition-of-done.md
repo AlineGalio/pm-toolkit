@@ -1,6 +1,4 @@
-# `team-agreements/definition-of-done.md`
-
-## Definition of Done (DoD)
+# Definition of Done (DoD)
 
 A story is done only when all items are true.
 
