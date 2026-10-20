@@ -32,6 +32,7 @@ Chosen option: **2, Strangler Fig**. A modern shell routes each page to either t
 - **Follow-up:** define module order, a routing rule and a retirement date for each legacy module.
 
 ### Pros and cons of the options
+
 | Option | Pros | Cons |
 | --- | --- | --- |
 | Full rewrite | Clean result, single stack | Long freeze, late feedback, high cutover risk |
