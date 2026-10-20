@@ -1,6 +1,4 @@
-# `adr/0002-polly-for-circuit-breaker.md`
-
-## ADR-0002: Use Polly for timeouts, retries and circuit breaker
+# ADR-0002: Use Polly for timeouts, retries and circuit breaker
 
 - **Status:** Accepted
 - **Date:** 2026-10-19
@@ -32,6 +30,7 @@ Chosen option: **1, Polly**. Each integration gets a resilience policy: timeout,
 - **Follow-up:** define default thresholds, emit breaker state as metrics, add alerts.
 
 ### Pros and cons of the options
+
 | Option | Pros | Cons |
 | --- | --- | --- |
 | Polly | Mature, fits the HTTP client factory | New dependency to learn and tune |
