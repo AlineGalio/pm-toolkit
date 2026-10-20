@@ -48,20 +48,20 @@ pm-toolkit/
 ## Live demos
 
 - Assessment report: [`https://alinegalio.github.io/pm-toolkit/assessment/`](https://alinegalio.github.io/pm-toolkit/assessment/)
-- Assessment README: [`https://alinegalio.github.io/pm-toolkit/assessment/README`]
-- Agile dashboard: [`https://alinegalio.github.io/pm-toolkit/dashboard/`]
-- Excel Agile numbers: [`https://alinegalio.github.io/pm-toolkit/dashboard/agile-dashboard-data.xlsx`]
-- User Stories - template: [`https://alinegalio.github.io/pm-toolkit/user-stories/TEMPLATE`]
-- User Stories - example: [`https://alinegalio.github.io/pm-toolkit/user-stories/US-001-move-secrets-to-vault`]
-- ADR - example 1: [`https://alinegalio.github.io/pm-toolkit/adr/0001-strangler-fig-instead-of-full-rewrite`]
-- ADR - example 1: [`https://alinegalio.github.io/pm-toolkit/adr/0002-polly-for-circuit-breaker`]
-- DoD: [`https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-done`]
-- DoR: [`https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-ready`]
-- Roadmap: [`https://alinegalio.github.io/pm-toolkit/roadmap/roadmap`]
-- Risks: [`https://alinegalio.github.io/pm-toolkit/risks/risk-register`]
-- RAID: [`https://alinegalio.github.io/pm-toolkit/raid/raid-log`]
-- Playbook README: [`https://alinegalio.github.io/pm-toolkit/playbook/README.md`]
-- Playbook PDF: [`https://alinegalio.github.io/pm-toolkit/playbook/legacy-migration-playbook.pdf`]
+- Assessment README: [`https://alinegalio.github.io/pm-toolkit/assessment/README`](https://alinegalio.github.io/pm-toolkit/assessment/README)
+- Agile dashboard: [`https://alinegalio.github.io/pm-toolkit/dashboard/`](https://alinegalio.github.io/pm-toolkit/dashboard/)
+- Excel Agile numbers: [`https://alinegalio.github.io/pm-toolkit/dashboard/agile-dashboard-data.xlsx`](https://alinegalio.github.io/pm-toolkit/dashboard/agile-dashboard-data.xlsx)
+- User Stories - template: [`https://alinegalio.github.io/pm-toolkit/user-stories/TEMPLATE`](https://alinegalio.github.io/pm-toolkit/user-stories/TEMPLATE)
+- User Stories - example: [`https://alinegalio.github.io/pm-toolkit/user-stories/US-001-move-secrets-to-vault`](https://alinegalio.github.io/pm-toolkit/user-stories/US-001-move-secrets-to-vault)
+- ADR - example 1: [`https://alinegalio.github.io/pm-toolkit/adr/0001-strangler-fig-instead-of-full-rewrite`](https://alinegalio.github.io/pm-toolkit/adr/0001-strangler-fig-instead-of-full-rewrite)
+- ADR - example 1: [`https://alinegalio.github.io/pm-toolkit/adr/0002-polly-for-circuit-breaker`](https://alinegalio.github.io/pm-toolkit/adr/0002-polly-for-circuit-breaker)
+- DoD: [`https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-done`](https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-done)
+- DoR: [`https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-ready`](https://alinegalio.github.io/pm-toolkit/team-agreements/definition-of-ready)
+- Roadmap: [`https://alinegalio.github.io/pm-toolkit/roadmap/roadmap`](https://alinegalio.github.io/pm-toolkit/roadmap/roadmap)
+- Risks: [`https://alinegalio.github.io/pm-toolkit/risks/risk-register`](https://alinegalio.github.io/pm-toolkit/risks/risk-register)
+- RAID: [`https://alinegalio.github.io/pm-toolkit/raid/raid-log`](https://alinegalio.github.io/pm-toolkit/raid/raid-log)
+- Playbook README: [`https://alinegalio.github.io/pm-toolkit/playbook/README.md`](https://alinegalio.github.io/pm-toolkit/playbook/README.md)
+- Playbook PDF: [`https://alinegalio.github.io/pm-toolkit/playbook/legacy-migration-playbook.pdf`](https://alinegalio.github.io/pm-toolkit/playbook/legacy-migration-playbook.pdf)
 
 ## Principles
 
