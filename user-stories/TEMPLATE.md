@@ -1,6 +1,4 @@
-# `user-stories/TEMPLATE.md`
-
-## US-XXX: [Short title]
+# US-XXX: [Short title]
 
 **Epic / Debt item:** [ID]
 **Priority:** [Act now / Plan / Defer / Accept]
