@@ -1,3 +1,7 @@
+---
+title: "Technical Debt Assessment: Method"
+permalink: /assessment/README/
+---
 # Technical Debt Assessment: Method
 
 A lightweight, repeatable framework to find, score and sequence technical debt in an application. The sample report in this folder (`index.html`) applies it to a **fictional** system, the *Broker Portal* of *Example Insurance Co.* All data is invented.
