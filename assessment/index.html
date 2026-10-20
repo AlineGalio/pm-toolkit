@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head><script src="https://myhub.ia.br/canvas-vendor/tailwind.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Technical Debt Assessment – Broker Portal (Sample)</title>
+<style>
+  :root{--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc;--brand:#0f4c81;
+        --act:#b91c1c;--plan:#c2410c;--defer:#a16207;--accept:#4b5563}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  header{background:var(--brand);color:#fff;padding:40px 8vw}
+  header h1{margin:0 0 6px;font-size:28px}
+  header p{margin:0;opacity:.9}
+  .meta{margin-top:14px;font-size:13px;opacity:.85;display:flex;gap:18px;flex-wrap:wrap}
+  main{padding:24px 8vw 48px;max-width:1200px;margin:auto}
+  h2{margin:36px 0 12px;font-size:20px;color:var(--brand);border-bottom:2px solid var(--line);padding-bottom:6px}
+  .notice{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;font-size:13px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .card .v{font-size:30px;font-weight:700;color:var(--brand)}
+  .card .l{font-size:13px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:14px}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#eef2f7;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#374151}
+  td.n,th.n{text-align:right;white-space:nowrap}
+  .wrap{overflow-x:auto}
+  .b{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+  .act{background:var(--act)}.plan{background:var(--plan)}.defer{background:var(--defer)}.accept{background:var(--accept)}
+  .bar{height:10px;border-radius:5px;background:#e5e7eb;overflow:hidden;min-width:120px}
+  .bar span{display:block;height:100%;background:var(--brand)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+  .box h3{margin:0 0 8px;font-size:15px}
+  .box ul{margin:0;padding-left:18px;font-size:14px}
+  .heat td{text-align:center;font-weight:600;color:#fff;width:16%}
+  .h1{background:#9ca3af}.h2{background:#ca8a04}.h3{background:#ea580c}.h4{background:#dc2626}.h5{background:#7f1d1d}
+  .small{font-size:12px;color:var(--muted)}
+  footer{padding:20px 8vw;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Technical Debt Assessment</h1>
+  <p>Broker Portal · Example Insurance Co. (fictional)</p>
+  <div class="meta"><span>Sample report</span><span>Fictional data</span><span>Scoring model: Risk × Impact</span></div>
+</header>
+
+<main>
+  <p class="notice"><strong>Sample report.</strong> The company, application and every figure below are invented to demonstrate the method. Nothing here comes from a real client.</p>
+
+  <h2>1. Executive summary</h2>
+  <div class="cards">
+    <div class="card"><div class="v">13</div><div class="l">Validated debt items</div></div>
+    <div class="card"><div class="v">860 h</div><div class="l">Estimated effort</div></div>
+    <div class="card"><div class="v">66 h</div><div class="l">Average per item</div></div>
+    <div class="card"><div class="v">25</div><div class="l">Highest score (max 25)</div></div>
+  </div>
+  <p>The Broker Portal is a three-layer web application (front end, API, partner integrations). The assessment found <strong>4 items to act on now</strong> (136 h, 15.8% of effort), most of them security-related and cheap to fix. <strong>Plan</strong> concentrates 75.3% of the effort, driven by the runtime upgrade and the front-end migration.</p>
+
+  <h2>2. Method</h2>
+  <div class="grid2">
+    <div class="box">
+      <h3>Scoring</h3>
+      <p style="margin:0 0 8px;font-size:14px"><strong>Score = Risk × Impact</strong> (1–25). Effort in hours is reported separately and does not change the score.</p>
+      <ul>
+        <li><strong>Risk (1–5):</strong> likelihood that the debt causes an incident, breach or failed release.</li>
+        <li><strong>Impact (1–5):</strong> business and operational damage if it happens.</li>
+        <li><strong>Effort:</strong> estimate validated with the engineering team, in hours.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Quadrants</h3>
+      <ul>
+        <li><span class="b act">Act now</span> score ≥ 16</li>
+        <li><span class="b plan">Plan</span> score 9–15</li>
+        <li><span class="b defer">Defer</span> score 4–8</li>
+        <li><span class="b accept">Accept</span> score ≤ 3 (documented, reviewed later)</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="small" style="margin-top:14px">Risk × Impact reference grid (cell = score):</p>
+  <div class="wrap">
+  <table class="heat">
+    <thead><tr><th>Risk \ Impact</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+    <tbody>
+      <tr><th>5</th><td class="h3">5</td><td class="h3">10</td><td class="h4">15</td><td class="h5">20</td><td class="h5">25</td></tr>
+      <tr><th>4</th><td class="h2">4</td><td class="h3">8</td><td class="h3">12</td><td class="h5">16</td><td class="h5">20</td></tr>
+      <tr><th>3</th><td class="h1">3</td><td class="h2">6</td><td class="h3">9</td><td class="h3">12</td><td class="h4">15</td></tr>
+      <tr><th>2</th><td class="h1">2</td><td class="h2">4</td><td class="h2">6</td><td class="h3">8</td><td class="h3">10</td></tr>
+      <tr><th>1</th><td class="h1">1</td><td class="h1">2</td><td class="h1">3</td><td class="h2">4</td><td class="h2">5</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>3. Summary by quadrant</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th>Quadrant</th><th class="n">Items</th><th class="n">Hours</th><th class="n">% of hours</th><th class="n">Avg per item</th><th>Share</th></tr></thead>
+    <tbody>
+      <tr><td><span class="b act">Act now</span></td><td class="n">4</td><td class="n">136</td><td class="n">15.8%</td><td class="n">34 h</td><td><div class="bar"><span style="width:15.8%"></span></div></td></tr>
+      <tr><td><span class="b plan">Plan</span></td><td class="n">5</td><td class="n">648</td><td class="n">75.3%</td><td class="n">130 h</td><td><div class="bar"><span style="width:75.3%"></span></div></td></tr>
+      <tr><td><span class="b defer">Defer</span></td><td class="n">3</td><td class="n">72</td><td class="n">8.4%</td><td class="n">24 h</td><td><div class="bar"><span style="width:8.4%"></span></div></td></tr>
+      <tr><td><span class="b accept">Accept</span></td><td class="n">1</td><td class="n">4</td><td class="n">0.5%</td><td class="n">4 h</td><td><div class="bar"><span style="width:0.5%"></span></div></td></tr>
+      <tr><th>Total</th><th class="n">13</th><th class="n">860</th><th class="n">100%</th><th class="n">66 h</th><th></th></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>4. Capacity by profile and category</h2>
+  <div class="grid2">
+    <div class="wrap">
+    <table>
+      <thead><tr><th>Profile</th><th class="n">Items</th><th class="n">Hours</th><th class="n">%</th></tr></thead>
+      <tbody>
+        <tr><td>Back end (BE)</td><td class="n">7</td><td class="n">472</td><td class="n">54.9%</td></tr>
+        <tr><td>Front end (FE)</td><td class="n">5</td><td class="n">308</td><td class="n">35.8%</td></tr>
+        <tr><td>Full stack (FS)</td><td class="n">1</td><td class="n">80</td><td class="n">9.3%</td></tr>
+        <tr><th>Total</th><th class="n">13</th><th class="n">860</th><th class="n">100%</th></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="wrap">
+    <table>
+      <thead><tr><th>Category</th><th class="n">Items</th><th class="n">Hours</th></tr></thead>
+      <tbody>
+        <tr><td>Security &amp; Compliance</td><td class="n">3</td><td class="n">56</td></tr>
+        <tr><td>Platform Lifecycle</td><td class="n">2</td><td class="n">400</td></tr>
+        <tr><td>Reliability</td><td class="n">2</td><td class="n">136</td></tr>
+        <tr><td>Code Health</td><td class="n">4</td><td class="n">204</td></tr>
+        <tr><td>Interfaces &amp; Contracts</td><td class="n">2</td><td class="n">64</td></tr>
+        <tr><th>Total</th><th class="n">13</th><th class="n">860</th></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <h2>5. Debt items, solutions and effort</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th>ID</th><th>Problem</th><th>Proposed solution</th><th>Layer</th><th>Profile</th><th class="n">Hours</th><th class="n">R</th><th class="n">I</th><th class="n">Score</th><th>Quadrant</th></tr></thead>
+    <tbody>
+      <tr><td>EX-01</td><td><strong>Credentials committed in repository.</strong> Database and API secrets sit in config files under version control.</td><td>Rotate all exposed secrets, move them to a secrets vault, purge history, add a blocking secret scanner to the pipeline.</td><td>API</td><td>BE</td><td class="n">16</td><td class="n">5</td><td class="n">5</td><td class="n">25</td><td><span class="b act">Act now</span></td></tr>
+      <tr><td>EX-02</td><td><strong>Logging library with a critical CVE.</strong> Request payloads are logged, so exploitation is plausible.</td><td>Isolated emergency upgrade to a patched version, regression check in staging, dependency-scan quality gate.</td><td>API</td><td>BE</td><td class="n">8</td><td class="n">5</td><td class="n">4</td><td class="n">20</td><td><span class="b act">Act now</span></td></tr>
+      <tr><td>EX-03</td><td><strong>TLS validation disabled in partner integrations.</strong> Any certificate is accepted.</td><td>Single HTTP client factory using the corporate trust store and TLS 1.2+. Replace the insecure clients.</td><td>API</td><td>BE</td><td class="n">32</td><td class="n">4</td><td class="n">5</td><td class="n">20</td><td><span class="b act">Act now</span></td></tr>
+      <tr><td>EX-04</td><td><strong>No automated tests on premium calculation.</strong> Any change risks a silent regression in core business logic.</td><td>Characterization tests for the calculation rules first, then unit and contract tests. Add a coverage gate that rises gradually.</td><td>API</td><td>BE</td><td class="n">80</td><td class="n">4</td><td class="n">4</td><td class="n">16</td><td><span class="b act">Act now</span></td></tr>
+      <tr><td>EX-05</td><td><strong>Legacy runtime past end of support.</strong> No security patches for the framework version in use.</td><td>Upgrade in waves with a proof of concept: resolve blockers, move to a current LTS runtime, validate with canary release.</td><td>API</td><td>BE</td><td class="n">240</td><td class="n">3</td><td class="n">5</td><td class="n">15</td><td><span class="b plan">Plan</span></td></tr>
+      <tr><td>EX-06</td><td><strong>No retry or circuit breaker on the payment gateway.</strong> One slow dependency exhausts the thread pool.</td><td>Per-integration timeouts, retry with backoff and jitter, circuit breaker. Pilot on the payment gateway.</td><td>API</td><td>BE</td><td class="n">56</td><td class="n">3</td><td class="n">5</td><td class="n">15</td><td><span class="b plan">Plan</span></td></tr>
+      <tr><td>EX-07</td><td><strong>Monolithic controller (900+ lines).</strong> Many responsibilities, hard to test, largest regression risk in the UI.</td><td>Incremental extraction into services with an explicit API, each step preceded by characterization tests.</td><td>Front end</td><td>FE</td><td class="n">112</td><td class="n">3</td><td class="n">4</td><td class="n">12</td><td><span class="b plan">Plan</span></td></tr>
+      <tr><td>EX-08</td><td><strong>No end-to-end tracing across layers.</strong> Logs cannot be correlated from browser to partner service.</td><td>Adopt OpenTelemetry with a W3C trace context propagated across all layers. Standard health dashboards.</td><td>Full stack</td><td>FS</td><td class="n">80</td><td class="n">3</td><td class="n">3</td><td class="n">9</td><td><span class="b plan">Plan</span></td></tr>
+      <tr><td>EX-09</td><td><strong>Outdated front-end framework.</strong> First-generation framework, blocking library upgrades.</td><td>Strangler Fig migration: a modern shell hosts legacy modules while each is rewritten. Start with one low-risk module.</td><td>Front end</td><td>FE</td><td class="n">160</td><td class="n">3</td><td class="n">3</td><td class="n">9</td><td><span class="b plan">Plan</span></td></tr>
+      <tr><td>EX-10</td><td><strong>API without OpenAPI contracts.</strong> Consumers can break silently on any change.</td><td>Publish OpenAPI specs for the main endpoints, version the API, add contract tests.</td><td>API</td><td>BE</td><td class="n">40</td><td class="n">2</td><td class="n">3</td><td class="n">6</td><td><span class="b defer">Defer</span></td></tr>
+      <tr><td>EX-11</td><td><strong>Hardcoded UI messages.</strong> Text is mixed with logic and cannot be edited by the business team.</td><td>Central message dictionary per module, migrated in waves starting with operator-visible errors.</td><td>Front end</td><td>FE</td><td class="n">24</td><td class="n">2</td><td class="n">3</td><td class="n">6</td><td><span class="b defer">Defer</span></td></tr>
+      <tr><td>EX-12</td><td><strong>Orphan files and dead dependencies.</strong> Unused build files and phantom packages.</td><td>Single housekeeping pull request, documented in the changelog.</td><td>Front end</td><td>FE</td><td class="n">8</td><td class="n">2</td><td class="n">2</td><td class="n">4</td><td><span class="b defer">Defer</span></td></tr>
+      <tr><td>EX-13</td><td><strong>Inconsistent code style.</strong> Mixed formatting makes reviews harder.</td><td>Linter and formatter applied in one isolated pull request.</td><td>Front end</td><td>FE</td><td class="n">4</td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td><span class="b accept">Accept</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>6. Recommended sequence</h2>
+  <div class="grid2">
+    <div class="box"><h3>Wave 1 · Weeks 1–3</h3><ul><li>EX-01, EX-02, EX-03 (56 h): close the security exposures.</li><li>Start EX-04 characterization tests.</li></ul></div>
+    <div class="box"><h3>Wave 2 · Months 1–3</h3><ul><li>Finish EX-04.</li><li>EX-06 resilience pilot.</li><li>EX-08 tracing foundation.</li></ul></div>
+    <div class="box"><h3>Wave 3 · Months 3–9</h3><ul><li>EX-05 runtime upgrade in waves.</li><li>EX-07 and EX-09 front-end refactor and migration.</li></ul></div>
+    <div class="box"><h3>Opportunistic</h3><ul><li>EX-10 to EX-13 bundled into maintenance pull requests.</li></ul></div>
+  </div>
+
+  <h2>7. Assumptions and open points</h2>
+  <ul>
+    <li>Effort estimates are validated with the engineering team, not contractual commitments.</li>
+    <li>Owners, dates and external dependencies are <strong>[to be confirmed]</strong>.</li>
+    <li>Scores are reviewed after each wave, as risk changes when items are closed.</li>
+  </ul>
+</main>
+
+<footer>Sample report with fictional data · Portfolio material · No client information</footer>
+</body>
+</html>
