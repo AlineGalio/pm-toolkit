@@ -1,6 +1,4 @@
-# `adr/0001-strangler-fig-instead-of-full-rewrite.md`
-
-## ADR-0001: Use the Strangler Fig pattern instead of a full rewrite
+# ADR-0001: Use the Strangler Fig pattern instead of a full rewrite
 
 - **Status:** Accepted
 - **Date:** 2026-10-19
