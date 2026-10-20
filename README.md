@@ -60,7 +60,7 @@ pm-toolkit/
 - Roadmap: [`https://alinegalio.github.io/pm-toolkit/roadmap/roadmap`](https://alinegalio.github.io/pm-toolkit/roadmap/roadmap)
 - Risks: [`https://alinegalio.github.io/pm-toolkit/risks/risk-register`](https://alinegalio.github.io/pm-toolkit/risks/risk-register)
 - RAID: [`https://alinegalio.github.io/pm-toolkit/raid/raid-log`](https://alinegalio.github.io/pm-toolkit/raid/raid-log)
-- Playbook README: [`https://alinegalio.github.io/pm-toolkit/playbook/README.md`](https://alinegalio.github.io/pm-toolkit/playbook/README.md)
+- Playbook README: [`https://alinegalio.github.io/pm-toolkit/playbook/README`](https://alinegalio.github.io/pm-toolkit/playbook/README)
 - Playbook PDF: [`https://alinegalio.github.io/pm-toolkit/playbook/legacy-migration-playbook.pdf`](https://alinegalio.github.io/pm-toolkit/playbook/legacy-migration-playbook.pdf)
 
 ## Principles
