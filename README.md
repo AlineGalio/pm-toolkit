@@ -49,10 +49,8 @@ pm-toolkit/
 
 ## Live demos
 
-- Assessment report: `https://<your-user>.github.io/pm-toolkit/assessment/`
-- Agile dashboard: `https://<your-user>.github.io/pm-toolkit/dashboard/`
-
-*(Enable GitHub Pages on the `main` branch and replace `<your-user>`.)*
+- Assessment report: `https://alinegalio.github.io/pm-toolkit/assessment/`
+- Agile dashboard: `https://aliengalio.github.io/pm-toolkit/dashboard/`
 
 ## Principles
 
@@ -63,7 +61,7 @@ pm-toolkit/
 
 ## License
 
-Add a license of your choice (for example MIT for the text and templates).
+No Licensing.
 
 ---
 
