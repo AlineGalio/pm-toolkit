@@ -1,6 +1,4 @@
-# `team-agreements/definition-of-ready.md`
-
-## Definition of Ready (DoR)
+# Definition of Ready (DoR)
 
 A story enters a sprint only when all items are true.
 
