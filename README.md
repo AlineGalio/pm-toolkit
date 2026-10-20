@@ -47,7 +47,7 @@ pm-toolkit/
 
 ## Live demos
 
-- Assessment report: [`https://alinegalio.github.io/pm-toolkit/assessment/`]
+- Assessment report: [`https://alinegalio.github.io/pm-toolkit/assessment/`](https://alinegalio.github.io/pm-toolkit/assessment/)
 - Assessment README: [`https://alinegalio.github.io/pm-toolkit/assessment/README`]
 - Agile dashboard: [`https://alinegalio.github.io/pm-toolkit/dashboard/`]
 - Excel Agile numbers: [`https://alinegalio.github.io/pm-toolkit/dashboard/agile-dashboard-data.xlsx`]
