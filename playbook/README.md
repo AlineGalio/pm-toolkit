@@ -1,3 +1,7 @@
+---
+title: "Legacy Migration Playbook"
+permalink: /playbook/README/
+---
 # `playbook/README.md`
 
 # Legacy Migration Playbook
